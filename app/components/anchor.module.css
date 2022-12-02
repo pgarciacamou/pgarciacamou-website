@@ -1,0 +1,18 @@
+.anchor_controls {
+  font-size: 0.7em;
+}
+
+.anchor_controls > * {
+  display: inline;
+}
+
+.anchor_controls a,
+.anchor_controls button,
+.anchor_controls i,
+.anchor_controls i::after {
+  color: #555;
+}
+
+.anchor_controls i {
+  margin-right: 0.3em;
+}
