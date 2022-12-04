@@ -139,6 +139,17 @@ export default function Home() {
         >
           LinkedIn
         </a>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://medium.com/@pgarciacamou"
+          className={styles.contactLink}
+          style={{
+            backgroundImage: "url('/images/iconmonstr-medium.svg')",
+          }}
+        >
+          Medium
+        </a>
       </footer>
     </div>
   );
