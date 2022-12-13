@@ -1,29 +1,26 @@
 import styles from "./Home.module.css";
 
-const descriptionCode = `
-function PabloGarcia() {
-  return (
-    <>
-      <meta name="author" content="Pablo Garcia" />
-      <meta name="description" content="Quality centered software engineer." />
-      <meta name="yoe" content="${new Date().getFullYear() - 2012}+" />
-      <meta
-        name="education"
-        content={\`
-          B.Eng. in Computer Software.
-          M.S. in Computer Science.
-          M.S. Specialization in Computing Systems.
-        \`}
-      />
-    </>
-  );
-}
-`;
+// function PabloGarcia() {
+//   return (
+//     <>
+//       <meta name="author" content="Pablo Garcia" />
+//       <meta name="description" content="Quality centered software engineer." />
+//       <meta name="yoe" content="${new Date().getFullYear() - 2012}+" />
+//       <meta
+//         name="education"
+//         content={\`
+//           B.Eng. in Computer Software.
+//           M.S. in Computer Science.
+//           M.S. Specialization in Computing Systems.
+//         \`}
+//       />
+//     </>
+//   );
+// }
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      {/* <PabloGarcia /> */}
+    <div id={styles.wrapper} className={styles.container}>
       <main className={styles.main}>
         <div className={styles.spacer} />
         <h1 className={styles.title} aria-label="Pablo Garcia">

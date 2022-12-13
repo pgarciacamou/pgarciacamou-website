@@ -1,0 +1,9 @@
+.theme {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+}
+
+.theme label {
+  font-size: 0.9em;
+}

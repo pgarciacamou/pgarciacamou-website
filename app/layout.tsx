@@ -1,5 +1,6 @@
-import "../styles/globals.css";
+import "./globals.css";
 import Analytics from "./analytics";
+import { Theme } from "./components/theme";
 
 export default function RootLayout({
   children,
@@ -9,7 +10,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body>{children}</body>
+      <body>
+        <Theme />
+        <div id="app">{children}</div>
+      </body>
       <Analytics />
     </html>
   );

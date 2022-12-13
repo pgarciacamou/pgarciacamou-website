@@ -1,0 +1,54 @@
+/* automatic light mode (OS default) */
+/* ❗️ keep the rules in sync with the manual light mode below! */
+:root {
+  --theme-color-scheme: light;
+  --theme-color: black;
+  --theme-background-color: white;
+  --theme-footer-border-color: #eaeaea;
+  --theme-code-background-color: #181818;
+  --theme-contact-link-invert: 0;
+}
+
+/* automatic dark mode (OS default) */
+/* ❗️ keep the rules in sync with the manual dark mode below! */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme-color-scheme: dark;
+    --theme-color: white;
+    --theme-background-color: black;
+    --theme-footer-border-color: #222;
+    --theme-code-background-color: #111;
+    --theme-contact-link-invert: 1;
+  }
+}
+
+/* manual light mode */
+/* ❗️ keep the rules in sync with the automatic light mode above! */
+:root:has(#theme option[value="light"]:checked) {
+  --theme-color-scheme: light;
+  --theme-color: black;
+  --theme-background-color: white;
+  --theme-footer-border-color: #eaeaea;
+  --theme-code-background-color: #181818;
+  --theme-contact-link-invert: 0;
+}
+
+/* manual dark mode */
+/* ❗️ keep the rules in sync with the automatic dark mode above! */
+:root:has(#theme option[value="dark"]:checked) {
+  --theme-color-scheme: dark;
+  --theme-color: white;
+  --theme-background-color: black;
+  --theme-footer-border-color: #222;
+  --theme-code-background-color: #111;
+  --theme-contact-link-invert: 1;
+}
+
+/* use the variables */
+html {
+  color-scheme: var(--theme-color-scheme);
+}
+body {
+  color: var(--theme-color);
+  background-color: var(--theme-background-color);
+}
