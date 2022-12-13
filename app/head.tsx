@@ -63,7 +63,7 @@ export default function RootHead({ canonicalUrl, url = canonicalUrl }: THead) {
 
       {/* Crawlers / Robots */}
       <link
-        rel="canonicalUrl"
+        rel="canonical"
         href={canonicalUrl || "https://pgarciacamou.dev/"}
       />
       <meta name="robots" content={isProduction() ? "all" : "none"} />
