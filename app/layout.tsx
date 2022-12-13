@@ -13,8 +13,8 @@ export default function RootLayout({
       <body>
         <Theme />
         <div id="app">{children}</div>
+        <Analytics />
       </body>
-      <Analytics />
     </html>
   );
 }
