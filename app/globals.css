@@ -6,11 +6,25 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 * {
   box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  /* text-decoration: none; */
+}
+
+pre {
+  /* display: block; */
+  /* overflow: auto; */
+  /* max-width: 95vw; */
+}
+
+code[class^="language"] {
+  background: var(--theme-code-background-color);
+  border-radius: 5px;
+  font-size: 17px;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
 }

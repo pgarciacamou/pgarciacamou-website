@@ -5,6 +5,11 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  pageExtensions: ["mdx"] /* render MDX files inside `pages/`. */,
 };
 
-module.exports = nextConfig;
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/,
+});
+
+module.exports = withMDX(nextConfig);
