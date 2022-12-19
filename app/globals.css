@@ -21,10 +21,10 @@ pre {
   /* max-width: 95vw; */
 }
 
-code[class^="language"] {
-  background: var(--theme-code-background-color);
-  border-radius: 5px;
-  font-size: 17px;
+code {
+  /* background-color: var(--theme-code-background-color); */
+  /* border-radius: 5px; */
+  font-size: 0.85em;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
 }

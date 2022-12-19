@@ -10,6 +10,7 @@ export default ({ children }) => (
     canonicalUrl={"https://pgarciacamou.dev/posts/testing"}
     keywords={"CSS, Dark mode, Next.js"}
     children={children}
+    codeBlocks={{ themeHtml }}
   />
 );
 
@@ -35,7 +36,11 @@ So, first let's add the dropdown.
 
 Ideally, we will have a nav bar component where we can add this, but for the purpose of this exercise, let's add the following snippet directly into our `app/layout.[jsx|tsx]` or `pages/app.[jsx|tsx]`:
 
-```jsx
+export const themeHtml = {
+  title: "this is some text <span> pretending to be <html> like html to fake",
+};
+
+```jsx#themeHtml
 <div id="theme">
   <label htmlFor="theme">Theme: </label>
   <select name="theme" defaultValue="os-default">
@@ -46,9 +51,13 @@ Ideally, we will have a nav bar component where we can add this, but for the pur
 </div>
 ```
 
+```jsx
+<testing />
+```
+
 Now that we have defined our control, we can jump to the styling solutions:
 
-### 1) Pure CSS
+### 1) Pure CSS solution
 
 For the pure CSS solution, we simply have to do the following:
 

@@ -15,9 +15,9 @@
   :root {
     --theme-color-scheme: dark;
     --theme-color: white;
-    --theme-background-color: black;
+    --theme-background-color: #1b1b1b;
     --theme-footer-border-color: #222;
-    --theme-code-background-color: #111;
+    --theme-code-background-color: #343434;
     --theme-contact-link-invert: 1;
   }
 }
@@ -38,9 +38,9 @@
 :root:has(#theme option[value="dark"]:checked) {
   --theme-color-scheme: dark;
   --theme-color: white;
-  --theme-background-color: black;
+  --theme-background-color: #1b1b1b;
   --theme-footer-border-color: #222;
-  --theme-code-background-color: #111;
+  --theme-code-background-color: #343434;
   --theme-contact-link-invert: 1;
 }
 
