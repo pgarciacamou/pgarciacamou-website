@@ -23,3 +23,8 @@ img {
   line-height: 1rem;
   margin-left: 4px;
 }
+
+pre {
+  /* margin 0 allows putting multiple code blocks together */
+  margin: 0;
+}

@@ -15,7 +15,12 @@ import {
 } from "react";
 import { Theme } from "../../app/components/theme";
 import hljs from "highlight.js";
-import "highlight.js/styles/atom-one-dark.css";
+// import "highlight.js/styles/atom-one-dark.css";
+// import "highlight.js/styles/stackoverflow-dark.css";
+// import "highlight.js/styles/night-owl.css";
+import "highlight.js/styles/github-dark.css";
+// import "highlight.js/styles/base16/default-dark.css";
+import "highlight.js/styles/base16/classic-dark.css";
 import "../globals.css";
 import "./blog.css";
 
@@ -101,39 +106,31 @@ const components = {
   h4: ({ children }: TComp) => <Heading as="h4" children={children} />,
   h5: ({ children }: TComp) => <Heading as="h5" children={children} />,
   h6: ({ children }: TComp) => <Heading as="h6" children={children} />,
-  code: ({ children, className = "", ...rest }: any) => {
-    const { codeBlocks }: any = useContext(BlogContext);
-    let id = "";
-
-    [className, id] = className.split("#");
-    console.log(id);
-    const { title } = codeBlocks[id] || {};
-    console.log({ className, rest, title });
-
-    if (!className) {
-      return (
-        <code
-          className="hljs"
-          dangerouslySetInnerHTML={{
-            __html: hljs.highlightAuto(children).value,
-          }}
-        />
-      );
+  code: ({ children, className: descriptor = "" }: any) => {
+    const isCodeBlock = children.includes("\n"); // blocks have newline characters
+    if (!isCodeBlock) {
+      return <code className="hljs single-line">{children}</code>;
     }
 
-    const [, language = "txt"] = className.match(/language-(.*)/) || [];
-    const value = hljs.highlight(children, { language }).value;
+    const [className, id] = descriptor.split("#");
+    const [, language = ""] = className.match(/language-(.*)/) || [];
+    const { codeBlocks }: any = useContext(BlogContext);
+    const { title } = codeBlocks[id] || {};
+
+    const __html = language
+      ? hljs.highlight(children, { language }).value
+      : hljs.highlightAuto(children).value;
+
     return (
       <>
         {title && (
-          <code className="hljs" style={{ textAlign: "right" }}>
+          <code className="hljs" style={{ backgroundColor: "black" }}>
             {title}
           </code>
         )}
         <code
           className={`hljs ${className}`}
-          {...rest}
-          dangerouslySetInnerHTML={{ __html: value }}
+          dangerouslySetInnerHTML={{ __html }}
         />
       </>
     );
@@ -143,7 +140,7 @@ const components = {
 /**
  * MDX layouts: https://nextjs.org/docs/advanced-features/using-mdx#layouts
  */
-const BlogContext = createContext();
+const BlogContext = createContext(null);
 export function BlogPostLayout({
   author,
   date,

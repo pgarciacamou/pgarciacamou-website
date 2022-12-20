@@ -2,6 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
+  line-height: 1.5;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -16,15 +17,19 @@ a {
 }
 
 pre {
-  /* display: block; */
-  /* overflow: auto; */
-  /* max-width: 95vw; */
+  display: block;
+  max-width: 98vw;
+  margin: auto !important;
 }
 
 code {
-  /* background-color: var(--theme-code-background-color); */
-  /* border-radius: 5px; */
-  font-size: 0.85em;
+  font-size: 0.9rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+code.single-line {
+  background-color: var(--theme-code-background-color);
+  font-size: 0.85em;
+  border-radius: 5px;
 }
