@@ -106,7 +106,14 @@ const components = {
   h4: ({ children }: TComp) => <Heading as="h4" children={children} />,
   h5: ({ children }: TComp) => <Heading as="h5" children={children} />,
   h6: ({ children }: TComp) => <Heading as="h6" children={children} />,
-  code: ({ children, className: descriptor = "" }: any) => {
+  pre: ({ children, ...props }, more, foo) => {
+    console.log({ props, more, foo });
+    return <pre>{children}</pre>;
+  },
+  code: ({ children, className: descriptor = "", ...rest }: any, more, foo) => {
+    console.log({ descriptor, rest, more, foo });
+    return null;
+
     const isCodeBlock = children.includes("\n"); // blocks have newline characters
     if (!isCodeBlock) {
       return <code className="hljs single-line">{children}</code>;

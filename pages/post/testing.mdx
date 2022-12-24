@@ -10,7 +10,11 @@ export default ({ children }) => (
     canonicalUrl={"https://pgarciacamou.dev/posts/testing"}
     keywords={"CSS, Dark mode, Next.js"}
     children={children}
-    codeBlocks={{ themeHtml }}
+    codeBlocks={{
+      themeHtml: {
+        title: "app/page.jsx",
+      },
+    }}
   />
 );
 
@@ -18,7 +22,7 @@ export default ({ children }) => (
 
 We can use a combination of CSS variables and some special CSS selectors to update the UI without the need to use JavaScript to, for example, change a top-level class. Note; this doesn't apply only to Next.js but the solution below will keep it closely in mind.
 
-With Next.js we have a `global.css` file out of the box being imported either at `pages/app.[jsx|tsx]` (or `app/layout.[jsx|tsx]` if you are using [Next.js 13 new app/ directory](https://nextjs.org/blog/next-13#new-app-directory-beta)).
+With Next.js we have a `global.css` file out of the box being imported either at `pages/app.[jsx|tsx]` (or `app/layout.[jsx|tsx]` if you are using [Next.js 13 new app/ directory](https://nextjs.org/blog/next-13#new-app-directory-beta).
 
 Just like any other problem in programming, there are multiple solutions. Usually, I favor vanilla solutions that use the default Next.js setup, so I'll start with pure CSS and then navigate my way into a sass/SCSS solution, but let's define the architecture first.
 
@@ -36,11 +40,13 @@ So, first let's add the dropdown.
 
 Ideally, we will have a nav bar component where we can add this, but for the purpose of this exercise, let's add the following snippet directly into our `app/layout.[jsx|tsx]` or `pages/app.[jsx|tsx]`:
 
-export const themeHtml = {
-  title: "app/page.jsx",
-};
+```jsonc
+{
+  "title": "app/page.jsx"
+}
+```
 
-```html#themeHtml
+```html filename="app/page.jsx"
 <div id="theme">
   <label htmlFor="theme">Theme: </label>
   <select name="theme" defaultValue="os-default">

@@ -29,6 +29,7 @@ code {
 }
 
 code.single-line {
+  color: inherit;
   background-color: var(--theme-code-background-color);
   font-size: 0.85em;
   border-radius: 5px;

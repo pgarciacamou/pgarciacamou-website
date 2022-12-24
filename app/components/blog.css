@@ -25,6 +25,5 @@ img {
 }
 
 pre {
-  /* margin 0 allows putting multiple code blocks together */
-  margin: 0;
+  margin: 0; /* allow putting multiple code blocks together */
 }
