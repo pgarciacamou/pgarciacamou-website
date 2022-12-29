@@ -27,3 +27,7 @@ img {
 pre {
   margin: 0; /* allow putting multiple code blocks together */
 }
+
+pre::before {
+  content: attr(data-file-name);
+}

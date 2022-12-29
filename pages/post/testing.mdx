@@ -2,19 +2,14 @@ import { BlogPostLayout } from "../../app/components/blog.layout";
 
 export default ({ children }) => (
   <BlogPostLayout
-    author={"Pablo Garcia"}
-    date={new Date("2022-12-13T00:00:00.000-08:00")}
-    edited={new Date("2022-12-13T00:00:00.000-08:00")}
-    title={"Next.js Pure CSS dark mode switch."}
-    description={"Next.js Pure CSS dark mode switch."}
-    canonicalUrl={"https://pgarciacamou.dev/posts/testing"}
-    keywords={"CSS, Dark mode, Next.js"}
+    author="Pablo Garcia"
+    date="2022-12-13"
+    edited="2022-12-13"
+    title="Next.js Pure CSS dark mode switch."
+    description="Next.js Pure CSS dark mode switch."
+    canonicalUrl="https://pgarciacamou.dev/posts/testing"
+    keywords="CSS, Dark mode, Next.js"
     children={children}
-    codeBlocks={{
-      themeHtml: {
-        title: "app/page.jsx",
-      },
-    }}
   />
 );
 
@@ -40,13 +35,7 @@ So, first let's add the dropdown.
 
 Ideally, we will have a nav bar component where we can add this, but for the purpose of this exercise, let's add the following snippet directly into our `app/layout.[jsx|tsx]` or `pages/app.[jsx|tsx]`:
 
-```jsonc
-{
-  "title": "app/page.jsx"
-}
-```
-
-```html filename="app/page.jsx"
+```html fileName="app/page.jsx"
 <div id="theme">
   <label htmlFor="theme">Theme: </label>
   <select name="theme" defaultValue="os-default">

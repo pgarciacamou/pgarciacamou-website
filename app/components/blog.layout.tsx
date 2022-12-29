@@ -43,10 +43,10 @@ type TBlogPostDate = {
 
 function BlogPostDate({ date, children }: TBlogPostDate) {
   if (!date) return null;
+  const d = new Date(`${date}T00:00:00.000-08:00`);
   return (
     <>
-      {children}{" "}
-      <time dateTime={date.toISOString()}>{date.toDateString()}</time>
+      {children} <time dateTime={d.toISOString()}>{d.toDateString()}</time>
     </>
   );
 }
@@ -106,40 +106,27 @@ const components = {
   h4: ({ children }: TComp) => <Heading as="h4" children={children} />,
   h5: ({ children }: TComp) => <Heading as="h5" children={children} />,
   h6: ({ children }: TComp) => <Heading as="h6" children={children} />,
-  pre: ({ children, ...props }, more, foo) => {
-    console.log({ props, more, foo });
-    return <pre>{children}</pre>;
+  pre: ({ children, fileName }: any) => {
+    return (
+      <pre {...(fileName && { "data-file-name": fileName })}>{children}</pre>
+    );
   },
-  code: ({ children, className: descriptor = "", ...rest }: any, more, foo) => {
-    console.log({ descriptor, rest, more, foo });
-    return null;
-
-    const isCodeBlock = children.includes("\n"); // blocks have newline characters
+  code: ({ children, className = "" }: any) => {
+    const isCodeBlock = children.includes("\n"); // blocks have newline characters.
     if (!isCodeBlock) {
       return <code className="hljs single-line">{children}</code>;
     }
 
-    const [className, id] = descriptor.split("#");
-    const [, language = ""] = className.match(/language-(.*)/) || [];
-    const { codeBlocks }: any = useContext(BlogContext);
-    const { title } = codeBlocks[id] || {};
-
+    const [, language = ""] = className.match(/language-(\S+)/) || [];
     const __html = language
       ? hljs.highlight(children, { language }).value
       : hljs.highlightAuto(children).value;
 
     return (
-      <>
-        {title && (
-          <code className="hljs" style={{ backgroundColor: "black" }}>
-            {title}
-          </code>
-        )}
-        <code
-          className={`hljs ${className}`}
-          dangerouslySetInnerHTML={{ __html }}
-        />
-      </>
+      <code
+        className={`hljs ${className}`}
+        dangerouslySetInnerHTML={{ __html }}
+      />
     );
   },
 };
