@@ -4,6 +4,10 @@ import nextMDX from "@next/mdx";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 
+// These two dependencies are needed to add links to headings.
+import rehypeSlug from "rehype-slug"; // adds ids
+import rehypeAutolinkHeadings from "rehype-autolink-headings"; // adds links
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
@@ -32,7 +36,7 @@ const withMDX = nextMDX({
     // remarkMdxCodeMeta = https://github.com/remcohaszing/remark-mdx-code-meta
     // remarkGfm = https://github.com/remarkjs/remark-gfm
     remarkPlugins: [remarkMdxCodeMeta, remarkGfm], // require("remark-prism") = code syntax highlighting via Prism
-    rehypePlugins: [],
+    rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]],
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",
   },

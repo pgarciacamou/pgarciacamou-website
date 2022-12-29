@@ -6,21 +6,16 @@
  */
 import { MDXProvider } from "@mdx-js/react";
 import Head from "next/head";
-import {
-  ElementType,
-  isValidElement,
-  ReactNode,
-  useContext,
-  createContext,
-} from "react";
+import { ElementType, isValidElement, ReactNode, createContext } from "react";
 import { Theme } from "../../app/components/theme";
 import hljs from "highlight.js";
+
 // import "highlight.js/styles/atom-one-dark.css";
 // import "highlight.js/styles/stackoverflow-dark.css";
 // import "highlight.js/styles/night-owl.css";
 import "highlight.js/styles/github-dark.css";
 // import "highlight.js/styles/base16/default-dark.css";
-import "highlight.js/styles/base16/classic-dark.css";
+// import "highlight.js/styles/base16/classic-dark.css";
 import "../globals.css";
 import "./blog.css";
 
@@ -100,12 +95,12 @@ export function Heading({ as: Tag, children, hasAnchor = true }: THeading) {
  */
 type TComp = { children?: ReactNode };
 const components = {
-  h1: ({ children }: TComp) => <Heading as="h1" children={children} />,
-  h2: ({ children }: TComp) => <Heading as="h2" children={children} />,
-  h3: ({ children }: TComp) => <Heading as="h3" children={children} />,
-  h4: ({ children }: TComp) => <Heading as="h4" children={children} />,
-  h5: ({ children }: TComp) => <Heading as="h5" children={children} />,
-  h6: ({ children }: TComp) => <Heading as="h6" children={children} />,
+  // h1: ({ children }: TComp) => <Heading as="h1" children={children} />,
+  // h2: ({ children }: TComp) => <Heading as="h2" children={children} />,
+  // h3: ({ children }: TComp) => <Heading as="h3" children={children} />,
+  // h4: ({ children }: TComp) => <Heading as="h4" children={children} />,
+  // h5: ({ children }: TComp) => <Heading as="h5" children={children} />,
+  // h6: ({ children }: TComp) => <Heading as="h6" children={children} />,
   pre: ({ children, fileName }: any) => {
     return (
       <pre {...(fileName && { "data-file-name": fileName })}>{children}</pre>
@@ -134,7 +129,6 @@ const components = {
 /**
  * MDX layouts: https://nextjs.org/docs/advanced-features/using-mdx#layouts
  */
-const BlogContext = createContext(null);
 export function BlogPostLayout({
   author,
   date,
@@ -144,47 +138,32 @@ export function BlogPostLayout({
   keywords,
   children,
   canonicalUrl,
-  codeBlocks,
 }: TBlogPostLayout) {
   return (
     <MDXProvider components={components}>
-      <BlogContext.Provider
-        value={{
-          author,
-          date,
-          edited,
-          title,
-          description,
-          keywords,
-          children,
-          canonicalUrl,
-          codeBlocks,
-        }}
-      >
-        <Head>
-          <meta charSet="UTF-8" />
-          <meta name="description" content={description} />
-          <meta name="keywords" content={keywords} />
-          <meta name="author" content={author} />
-          <link rel="canonical" href={canonicalUrl} />
-          <title>{title}</title>
-        </Head>
-        <Theme />
-        <main>
-          <article>
-            <header>
-              <p>
-                Author: {author}
-                <br />
-                <BlogPostDate date={date}>Created at: </BlogPostDate>
-                <br />
-                <BlogPostDate date={edited}>Edited on: </BlogPostDate>
-              </p>
-            </header>
-            {children}
-          </article>
-        </main>
-      </BlogContext.Provider>
+      <Head>
+        <meta charSet="UTF-8" />
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
+        <meta name="author" content={author} />
+        <link rel="canonical" href={canonicalUrl} />
+        <title>{title}</title>
+      </Head>
+      <Theme />
+      <main>
+        <article>
+          <header>
+            <p>
+              Author: {author}
+              <br />
+              <BlogPostDate date={date}>Created at: </BlogPostDate>
+              <br />
+              <BlogPostDate date={edited}>Edited on: </BlogPostDate>
+            </p>
+          </header>
+          {children}
+        </article>
+      </main>
     </MDXProvider>
   );
 }

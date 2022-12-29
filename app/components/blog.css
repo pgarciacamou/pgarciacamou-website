@@ -7,21 +7,42 @@ img {
   width: 100%;
 }
 
-.anchor-link {
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
   color: inherit;
+  position: relative;
   text-decoration: none;
 }
 
-.anchor-link:hover span {
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover {
   text-decoration: underline;
 }
 
-.anchor-link:hover::after {
+h1 a:hover::before,
+h2 a:hover::before,
+h3 a:hover::before,
+h4 a:hover::before,
+h5 a:hover::before,
+h6 a:hover::before {
   content: "#";
+  position: absolute;
   opacity: 0.7;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1rem;
-  margin-left: 4px;
+  height: 100%;
+  right: 100%;
+  margin-right: 4px;
+  display: flex;
+  align-items: flex-end;
 }
 
 pre {
