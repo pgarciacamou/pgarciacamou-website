@@ -7,32 +7,53 @@ img {
   width: 100%;
 }
 
-h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a,
-h6 a {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-indent: -5px;
+}
+
+h1[id] > a,
+h2[id] > a,
+h3[id] > a,
+h4[id] > a,
+h5[id] > a,
+h6[id] > a {
   color: inherit;
   position: relative;
   text-decoration: none;
 }
 
-h1 a:hover,
-h2 a:hover,
-h3 a:hover,
-h4 a:hover,
-h5 a:hover,
-h6 a:hover {
+h1[id] > a:hover,
+h1[id] > a:focus,
+h2[id] > a:hover,
+h2[id] > a:focus,
+h3[id] > a:hover,
+h3[id] > a:focus,
+h4[id] > a:hover,
+h4[id] > a:focus,
+h5[id] > a:hover,
+h5[id] > a:focus,
+h6[id] > a:hover,
+h6[id] > a:focus {
   text-decoration: underline;
 }
 
-h1 a:hover::before,
-h2 a:hover::before,
-h3 a:hover::before,
-h4 a:hover::before,
-h5 a:hover::before,
-h6 a:hover::before {
+h1[id] > a:hover::before,
+h1[id] > a:focus::before,
+h2[id] > a:hover::before,
+h2[id] > a:focus::before,
+h3[id] > a:hover::before,
+h3[id] > a:focus::before,
+h4[id] > a:hover::before,
+h4[id] > a:focus::before,
+h5[id] > a:hover::before,
+h5[id] > a:focus::before,
+h6[id] > a:hover::before,
+h6[id] > a:focus::before {
   content: "#";
   position: absolute;
   opacity: 0.7;
@@ -45,18 +66,11 @@ h6 a:hover::before {
   align-items: flex-end;
 }
 
-pre {
-  margin: 0; /* allow putting multiple code blocks together */
-}
-
-pre::before {
-  content: attr(data-file-name);
-}
-
 pre > code {
-  /* Display grid allows line highlighting to span the width of a horizontally-scrollable code block on small viewport widths. */
   font-size: 0.8em;
   counter-reset: line;
+  /* Display grid allows line highlighting to span the width of a horizontally-scrollable code block on small viewport widths. */
+  background-color: var(--theme-codeblock-background-color);
 }
 
 pre > code > .line::before {
@@ -89,4 +103,19 @@ pre > code[data-theme="light"] {
 
 pre > code[data-theme="dark"] {
   display: var(--theme-codeblock-display-dark);
+}
+
+pre > code .line {
+  border-left: 2px solid transparent;
+  padding-left: 3px;
+}
+pre > code .line.line--highlighted {
+  background-color: var(--theme-codeblock-highlight-background-color);
+  border-left-color: var(--theme-codeblock-highlight-border-left-color);
+}
+
+pre > code .word.word--highlighted {
+  background-color: var(--theme-codeblock-highlight-background-color);
+  padding: 5px;
+  border-radius: 5px;
 }

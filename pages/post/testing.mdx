@@ -35,7 +35,7 @@ So, first let's add the dropdown.
 
 Ideally, we will have a nav bar component where we can add this, but for the purpose of this exercise, let's add the following snippet directly into our `app/layout.[jsx|tsx]` or `pages/app.[jsx|tsx]`:
 
-```html title="app/page.jsx"
+```html title="app/page.jsx" {3-7}
 <div id="theme">
   <label htmlFor="theme">Theme: </label>
   <select name="theme" defaultValue="os-default">
@@ -52,7 +52,7 @@ Now that we have defined our control, we can jump to the styling solutions:
 
 For the pure CSS solution, we simply have to do the following:
 
-```css
+```css title="theme.css" /background-color/13 /color/12 {2,16}
 :root,
 :root:has(#theme option[value="light"]:checked) {
   --theme-color-scheme: light;
@@ -87,8 +87,7 @@ As we can see, we already use the variables in here to set some top-level props 
 
 Buy, we can use this inside any stylesheets using the [CSS var() function](https://developer.mozilla.org/en-US/docs/Web/CSS/var):
 
-```css
-/* someComponent.module.css */
+```css title="someComponent.module.css"
 .someComponent {
   color: var(--theme-color);
 }

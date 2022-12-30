@@ -6,10 +6,10 @@
  */
 import { MDXProvider } from "@mdx-js/react";
 import Head from "next/head";
-import { ElementType, isValidElement, ReactNode, createContext } from "react";
+import { ElementType, isValidElement, ReactNode } from "react";
 import { Theme } from "../../app/components/theme";
-import hljs from "highlight.js";
 
+// import hljs from "highlight.js";
 // import "highlight.js/styles/atom-one-dark.css";
 // import "highlight.js/styles/stackoverflow-dark.css";
 // import "highlight.js/styles/night-owl.css";
@@ -46,54 +46,54 @@ function BlogPostDate({ date, children }: TBlogPostDate) {
   );
 }
 
-/**
- * Extracts the text content from a ReactNode
- */
-export function getNodeText(node: ReactNode): string {
-  if (!node) return "";
-  if (["string", "number"].includes(typeof node)) return `${node}`;
-  if (Array.isArray(node)) {
-    return node.map((n: ReactNode) => getNodeText(n)).join("");
-  }
-  if (isValidElement(node) && typeof node === "object") {
-    return getNodeText(node.props.children);
-  }
-  return "";
-}
+// /**
+//  * Extracts the text content from a ReactNode
+//  */
+// export function getNodeText(node: ReactNode): string {
+//   if (!node) return "";
+//   if (["string", "number"].includes(typeof node)) return `${node}`;
+//   if (Array.isArray(node)) {
+//     return node.map((n: ReactNode) => getNodeText(n)).join("");
+//   }
+//   if (isValidElement(node) && typeof node === "object") {
+//     return getNodeText(node.props.children);
+//   }
+//   return "";
+// }
 
-/**
- * When 'hasAnchor' is true, Heading extracts the text content from the children
- * and uses it as an id for the heading element and wraps the children with an
- * anchor.
- */
-export type THeading = {
-  as: ElementType;
-  children: ReactNode;
-  hasAnchor?: boolean;
-};
-export function Heading({ as: Tag, children, hasAnchor = true }: THeading) {
-  const id = getNodeText(children)
-    .toLowerCase()
-    .replace(/[^a-z0-9 ]/g, "")
-    .replace(/\s/g, "-");
-  return (
-    <Tag id={id}>
-      {hasAnchor ? (
-        <a href={`#${id}`} className="anchor-link">
-          <span>{children}</span>
-        </a>
-      ) : (
-        children
-      )}
-    </Tag>
-  );
-}
+// /**
+//  * When 'hasAnchor' is true, Heading extracts the text content from the children
+//  * and uses it as an id for the heading element and wraps the children with an
+//  * anchor.
+//  */
+// export type THeading = {
+//   as: ElementType;
+//   children: ReactNode;
+//   hasAnchor?: boolean;
+// };
+// export function Heading({ as: Tag, children, hasAnchor = true }: THeading) {
+//   const id = getNodeText(children)
+//     .toLowerCase()
+//     .replace(/[^a-z0-9 ]/g, "")
+//     .replace(/\s/g, "-");
+//   return (
+//     <Tag id={id}>
+//       {hasAnchor ? (
+//         <a href={`#${id}`} className="anchor-link">
+//           <span>{children}</span>
+//         </a>
+//       ) : (
+//         children
+//       )}
+//     </Tag>
+//   );
+// }
 
 /**
  * Using MDXProvider, we can replace components parsed by MDX:
  * https://nextjs.org/docs/advanced-features/using-mdx#custom-elements
  */
-type TComp = { children?: ReactNode };
+// type TComp = { children?: ReactNode };
 const components = {
   // h1: ({ children }: TComp) => <Heading as="h1" children={children} />,
   // h2: ({ children }: TComp) => <Heading as="h2" children={children} />,
@@ -149,6 +149,7 @@ export function BlogPostLayout({
       </Head>
       <Theme />
       <main>
+        <br />
         <article>
           <header>
             <p>

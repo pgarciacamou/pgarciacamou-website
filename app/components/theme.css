@@ -1,15 +1,24 @@
 /* automatic light mode (OS default) */
 /* ❗️ keep the rules in sync with the manual light mode below! */
 :root {
+  /**
+   * "undefined" is invalid & forces the browser to pick something else.
+   * It essentially it works like "clearing the value".
+   */
+  --undefined: "undefined";
+
   --theme-color-scheme: light;
   --theme-color: black;
   --theme-background-color: white;
   --theme-footer-border-color: #eaeaea;
   --theme-contact-link-invert: 0;
-  --theme-code-background-color: #ececec;
+  --theme-code-background-color: rgba(175, 184, 193, 0.2);
+  --theme-codeblock-background-color: rgb(249, 249, 249);
+  --theme-codeblock-highlight-background-color: rgb(255, 248, 197);
+  --theme-codeblock-highlight-border-left-color: rgb(212, 167, 44, 0.4);
   --theme-codeblock-display-light: grid;
   --theme-codeblock-display-dark: none;
-  --theme-display-light: undefined;
+  --theme-display-light: var(--undefined);
   --theme-display-dark: none;
 }
 
@@ -22,11 +31,14 @@
     --theme-background-color: #1b1b1b;
     --theme-footer-border-color: #222;
     --theme-contact-link-invert: 1;
-    --theme-code-background-color: #343434;
+    --theme-code-background-color: rgba(110, 118, 129, 0.4);
+    --theme-codeblock-background-color: #0d1117;
+    --theme-codeblock-highlight-background-color: rgba(187, 128, 9, 0.15);
+    --theme-codeblock-highlight-border-left-color: rgba(187, 128, 9, 0.4);
     --theme-codeblock-display-light: none;
     --theme-codeblock-display-dark: grid;
     --theme-display-light: none;
-    --theme-display-dark: undefined;
+    --theme-display-dark: var(--undefined);
   }
 }
 
@@ -38,10 +50,13 @@
   --theme-background-color: white;
   --theme-footer-border-color: #eaeaea;
   --theme-contact-link-invert: 0;
-  --theme-code-background-color: #ececec;
+  --theme-code-background-color: rgba(175, 184, 193, 0.2);
+  --theme-codeblock-background-color: rgb(249, 249, 249);
+  --theme-codeblock-highlight-background-color: rgb(255, 248, 197);
+  --theme-codeblock-highlight-border-left-color: rgb(212, 167, 44, 0.4);
   --theme-codeblock-display-light: grid;
   --theme-codeblock-display-dark: none;
-  --theme-display-light: undefined;
+  --theme-display-light: var(--undefined);
   --theme-display-dark: none;
 }
 
@@ -53,11 +68,14 @@
   --theme-background-color: #1b1b1b;
   --theme-footer-border-color: #222;
   --theme-contact-link-invert: 1;
-  --theme-code-background-color: #343434;
+  --theme-code-background-color: rgba(110, 119, 124, 0.4);
+  --theme-codeblock-background-color: #0d1117;
+  --theme-codeblock-highlight-background-color: rgba(187, 128, 9, 0.15);
+  --theme-codeblock-highlight-border-left-color: rgba(187, 128, 9, 0.4);
   --theme-codeblock-display-light: none;
   --theme-codeblock-display-dark: grid;
   --theme-display-light: none;
-  --theme-display-dark: undefined;
+  --theme-display-dark: var(--undefined);
 }
 
 /* use the variables */

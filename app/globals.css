@@ -13,7 +13,6 @@ body {
 
 a {
   color: inherit;
-  /* text-decoration: none; */
 }
 
 pre {
@@ -26,11 +25,14 @@ code {
   font-size: 0.9rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
+  padding: 5px;
+  padding-left: 3px; /** @NOTE there is a 2px border left */
+  background-color: var(--theme-code-background-color);
 }
 
-code.single-line {
+code:not([data-language]) {
   color: inherit;
-  background-color: var(--theme-code-background-color);
   font-size: 0.85em;
   border-radius: 5px;
+  padding: 3px 5px;
 }

@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
-import remarkMdxCodeMeta from "remark-mdx-code-meta";
 import nextMDX from "@next/mdx";
 import remarkGfm from "remark-gfm";
-
-import rehypeHighlight from "rehype-highlight";
 
 // Allows adding highlight + title + line numbers, and more.
 // See: https://rehype-pretty-code.netlify.app/
@@ -66,7 +63,7 @@ const withMDX = nextMDX({
             node.properties.className.push("line--highlighted");
           },
           onVisitHighlightedWord(node) {
-            node.properties.className = ["word"];
+            node.properties.className = ["word", "word--highlighted"];
           },
         },
       ],
