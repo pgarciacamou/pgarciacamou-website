@@ -1,2 +1,2 @@
 1. Add dependabot!
-2.
+2. .nvmrc

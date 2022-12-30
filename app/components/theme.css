@@ -5,8 +5,12 @@
   --theme-color: black;
   --theme-background-color: white;
   --theme-footer-border-color: #eaeaea;
-  --theme-code-background-color: #ececec;
   --theme-contact-link-invert: 0;
+  --theme-code-background-color: #ececec;
+  --theme-codeblock-display-light: grid;
+  --theme-codeblock-display-dark: none;
+  --theme-display-light: undefined;
+  --theme-display-dark: none;
 }
 
 /* automatic dark mode (OS default) */
@@ -17,8 +21,12 @@
     --theme-color: white;
     --theme-background-color: #1b1b1b;
     --theme-footer-border-color: #222;
-    --theme-code-background-color: #343434;
     --theme-contact-link-invert: 1;
+    --theme-code-background-color: #343434;
+    --theme-codeblock-display-light: none;
+    --theme-codeblock-display-dark: grid;
+    --theme-display-light: none;
+    --theme-display-dark: undefined;
   }
 }
 
@@ -29,8 +37,12 @@
   --theme-color: black;
   --theme-background-color: white;
   --theme-footer-border-color: #eaeaea;
-  --theme-code-background-color: #ececec;
   --theme-contact-link-invert: 0;
+  --theme-code-background-color: #ececec;
+  --theme-codeblock-display-light: grid;
+  --theme-codeblock-display-dark: none;
+  --theme-display-light: undefined;
+  --theme-display-dark: none;
 }
 
 /* manual dark mode */
@@ -40,8 +52,12 @@
   --theme-color: white;
   --theme-background-color: #1b1b1b;
   --theme-footer-border-color: #222;
-  --theme-code-background-color: #343434;
   --theme-contact-link-invert: 1;
+  --theme-code-background-color: #343434;
+  --theme-codeblock-display-light: none;
+  --theme-codeblock-display-dark: grid;
+  --theme-display-light: none;
+  --theme-display-dark: undefined;
 }
 
 /* use the variables */

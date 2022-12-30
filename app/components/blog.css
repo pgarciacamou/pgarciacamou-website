@@ -52,3 +52,41 @@ pre {
 pre::before {
   content: attr(data-file-name);
 }
+
+pre > code {
+  /* Display grid allows line highlighting to span the width of a horizontally-scrollable code block on small viewport widths. */
+  font-size: 0.8em;
+  counter-reset: line;
+}
+
+pre > code > .line::before {
+  counter-increment: line;
+  content: counter(line);
+
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 0.8rem;
+  text-align: right;
+  color: gray;
+}
+
+div[data-rehype-pretty-code-title][data-theme="light"],
+pre[data-theme="light"],
+code[data-theme="light"] {
+  display: var(--theme-display-light);
+}
+
+div[data-rehype-pretty-code-title][data-theme="dark"],
+pre[data-theme="dark"],
+code[data-theme="dark"] {
+  display: var(--theme-display-dark);
+}
+
+pre > code[data-theme="light"] {
+  display: var(--theme-codeblock-display-light);
+}
+
+pre > code[data-theme="dark"] {
+  display: var(--theme-codeblock-display-dark);
+}

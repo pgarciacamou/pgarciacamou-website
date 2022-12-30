@@ -13,7 +13,7 @@ import hljs from "highlight.js";
 // import "highlight.js/styles/atom-one-dark.css";
 // import "highlight.js/styles/stackoverflow-dark.css";
 // import "highlight.js/styles/night-owl.css";
-import "highlight.js/styles/github-dark.css";
+// import "highlight.js/styles/github-dark.css";
 // import "highlight.js/styles/base16/default-dark.css";
 // import "highlight.js/styles/base16/classic-dark.css";
 import "../globals.css";
@@ -101,29 +101,27 @@ const components = {
   // h4: ({ children }: TComp) => <Heading as="h4" children={children} />,
   // h5: ({ children }: TComp) => <Heading as="h5" children={children} />,
   // h6: ({ children }: TComp) => <Heading as="h6" children={children} />,
-  pre: ({ children, fileName }: any) => {
-    return (
-      <pre {...(fileName && { "data-file-name": fileName })}>{children}</pre>
-    );
-  },
-  code: ({ children, className = "" }: any) => {
-    const isCodeBlock = children.includes("\n"); // blocks have newline characters.
-    if (!isCodeBlock) {
-      return <code className="hljs single-line">{children}</code>;
-    }
-
-    const [, language = ""] = className.match(/language-(\S+)/) || [];
-    const __html = language
-      ? hljs.highlight(children, { language }).value
-      : hljs.highlightAuto(children).value;
-
-    return (
-      <code
-        className={`hljs ${className}`}
-        dangerouslySetInnerHTML={{ __html }}
-      />
-    );
-  },
+  // pre: ({ children, fileName }: any) => {
+  //   return (
+  //     <pre {...(fileName && { "data-file-name": fileName })}>{children}</pre>
+  //   );
+  // },
+  // code: ({ children, className = "" }: any) => {
+  //   const isCodeBlock = children.includes("\n"); // blocks have newline characters.
+  //   if (!isCodeBlock) {
+  //     return <code className="hljs single-line">{children}</code>;
+  //   }
+  //   const [, language = ""] = className.match(/language-(\S+)/) || [];
+  //   const __html = language
+  //     ? hljs.highlight(children, { language }).value
+  //     : hljs.highlightAuto(children).value;
+  //   return (
+  //     <code
+  //       className={`hljs ${className}`}
+  //       dangerouslySetInnerHTML={{ __html }}
+  //     />
+  //   );
+  // },
 };
 
 /**
