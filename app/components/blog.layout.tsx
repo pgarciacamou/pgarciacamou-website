@@ -6,7 +6,12 @@
  */
 import { MDXProvider } from "@mdx-js/react";
 import Head from "next/head";
-import { ElementType, isValidElement, ReactNode } from "react";
+import {
+  ElementType,
+  isValidElement,
+  PropsWithChildren,
+  ReactNode,
+} from "react";
 import { Theme } from "../../app/components/theme";
 
 // import hljs from "highlight.js";
@@ -164,5 +169,12 @@ export function BlogPostLayout({
         </article>
       </main>
     </MDXProvider>
+  );
+}
+
+export default function Layout(props: PropsWithChildren<TBlogPostLayout>) {
+  console.log({ props });
+  return ({ children }: any) => (
+    <BlogPostLayout {...props} children={children} />
   );
 }
