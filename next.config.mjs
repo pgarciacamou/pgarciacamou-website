@@ -19,6 +19,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 // These two dependencies are needed to add links to headings.
 import rehypeSlug from "rehype-slug"; // adds ids
 import rehypeAutolinkHeadings from "rehype-autolink-headings"; // adds links
+import remarkGetStaticProps from "./unified/plugins/remark-get-static-props.mjs";
 
 const nextConfig = {
   reactStrictMode: true,
@@ -59,7 +60,35 @@ const withMDX = nextMDX({
       remarkParseFrontmatter,
       remarkUnwrapTexts,
       remarkReadingTime,
+      // [
+      //   remarkComputedFrontmatter,
+      //   (data, file) => {
+      //     if (!file.dirname.includes("/post")) {
+      //       throw new Error(`${file.dirname} to include /post`);
+      //     }
+      //     console.log({ ...file, name: file.name });
+      //     const slug = path.basename(file.dirname);
+      //     const url = file.dirname.split("/post")[1];
+
+      //     return {
+      //       ...data,
+      //       slug,
+      //       url,
+      //       readingTime: file.data.readingTime,
+      //     };
+      //   },
+      // ],
       [remarkDefaultExport, { path: "../../app/components/blog.layout" }],
+      // Try doing "visit" instead
+      () => (tree, file) => console.log(file.value),
+      [
+        remarkGetStaticProps,
+        () => {
+          return {
+            props: { __dirname, __filename },
+          };
+        },
+      ],
       remarkGfm,
     ],
     // If you need to create your own plugins, look at: https://github.com/mskelton/mskelton.dev/blob/4b79a701d2e8d980e0065c92366d4541a2477a3a/config/rehype-code-titles.mjs

@@ -3,6 +3,7 @@
 import AST from "abstract-syntax-tree";
 
 export default function remarkDefaultExport({
+  // @TODO Use path.cwd instead...
   path = "../../app/components/blog.layout",
   name = "Layout",
 } = {}) {

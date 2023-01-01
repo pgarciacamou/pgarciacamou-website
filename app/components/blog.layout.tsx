@@ -172,9 +172,9 @@ export function BlogPostLayout({
   );
 }
 
-export default function Layout(props: PropsWithChildren<TBlogPostLayout>) {
-  console.log({ props });
-  return ({ children }: any) => (
-    <BlogPostLayout {...props} children={children} />
-  );
+export default function Layout(props: any) {
+  return (layoutProps: PropsWithChildren<TBlogPostLayout>) => {
+    console.log({ layoutProps, props });
+    return <BlogPostLayout {...props} {...layoutProps} />;
+  };
 }
