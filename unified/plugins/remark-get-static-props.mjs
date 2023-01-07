@@ -5,14 +5,14 @@ export default function remarkGetStaticProps(callback) {
     const exportStr = `
       export const getStaticProps = () => (callback => callback())(${callback.toString()})
     `.trim();
-    tree.children.push(
-      ...Object.keys(file.data).map((attr) => ({
+    if (tree.children && tree.children.length) {
+      tree.children.push({
         type: "mdxjsEsm",
         value: exportStr,
         data: {
           estree: AST.parse(exportStr),
         },
-      }))
-    );
+      });
+    }
   };
 }

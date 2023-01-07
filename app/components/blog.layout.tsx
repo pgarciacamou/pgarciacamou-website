@@ -174,7 +174,7 @@ export function BlogPostLayout({
 
 export default function Layout(props: any) {
   return (layoutProps: PropsWithChildren<TBlogPostLayout>) => {
-    console.log({ layoutProps, props });
+    // console.log({ layoutProps, props });
     return <BlogPostLayout {...props} {...layoutProps} />;
   };
 }

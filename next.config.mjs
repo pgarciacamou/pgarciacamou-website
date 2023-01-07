@@ -6,6 +6,7 @@ import remarkGfm from "remark-gfm"; // vs https://github.com/PaulieScanlon/mdx-e
 import remarkFrontmatter from "remark-frontmatter";
 import remarkParseFrontmatter from "remark-parse-frontmatter";
 import remarkHoistFrontmatter from "./unified/plugins/remark-hoist-frontmatter.mjs";
+// import remarkCanonicalUrl from "./unified/plugins/remark-canonical-url.mjs";
 import remarkUnwrapTexts from "remark-unwrap-texts";
 import remarkDefaultExport from "./unified/plugins/remark-default-export.mjs";
 
@@ -19,7 +20,8 @@ import rehypePrettyCode from "rehype-pretty-code";
 // These two dependencies are needed to add links to headings.
 import rehypeSlug from "rehype-slug"; // adds ids
 import rehypeAutolinkHeadings from "rehype-autolink-headings"; // adds links
-import remarkGetStaticProps from "./unified/plugins/remark-get-static-props.mjs";
+// import remarkGetStaticProps from "./unified/plugins/remark-get-static-props.mjs";
+// import path from "path";
 
 const nextConfig = {
   reactStrictMode: true,
@@ -78,17 +80,34 @@ const withMDX = nextMDX({
       //     };
       //   },
       // ],
+      remarkHoistFrontmatter,
       [remarkDefaultExport, { path: "../../app/components/blog.layout" }],
-      // Try doing "visit" instead
-      () => (tree, file) => console.log(file.value),
-      [
-        remarkGetStaticProps,
-        () => {
-          return {
-            props: { __dirname, __filename },
-          };
-        },
-      ],
+      // [
+      //   remarkGetStaticProps,
+      //   () => {
+      //     const path = require("path");
+      //     // const scriptName = path.basename(__filename, '.mdx');
+      //     const baseUrl = "https://pgarciacamou.dev";
+      //     const pagesPath = path.join(process.cwd(), ".next/server/pages");
+      //     const route = path.relative(pagesPath, __dirname);
+      //     const resource = path.relative(__dirname, __filename);
+      //     return {
+      //       props: {
+      //         cwd: process.cwd(),
+      //         __dirname,
+      //         __filename,
+      //         relative: {
+      //           dirname: require("path").relative(
+      //             ".next/server/pages",
+      //             __dirname
+      //           ),
+      //           filename: require("path").relative(__dirname, __filename),
+      //           canonicalUrl: path.join(baseUrl, route, resource),
+      //         },
+      //       },
+      //     };
+      //   },
+      // ],
       remarkGfm,
     ],
     // If you need to create your own plugins, look at: https://github.com/mskelton/mskelton.dev/blob/4b79a701d2e8d980e0065c92366d4541a2477a3a/config/rehype-code-titles.mjs
