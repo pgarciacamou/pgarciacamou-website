@@ -2,7 +2,7 @@
 import { visit } from "unist-util-visit";
 import { load, dump } from "js-yaml";
 
-function remarkComputedFrontmatter(callback) {
+export default function remarkComputedFrontmatter(callback) {
   return (tree, file) => {
     visit(tree, "yaml", (node) => {
       const result = callback(load(node.value), file);
@@ -11,5 +11,3 @@ function remarkComputedFrontmatter(callback) {
     });
   };
 }
-
-export default remarkComputedFrontmatter;

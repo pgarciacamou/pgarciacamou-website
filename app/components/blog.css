@@ -66,6 +66,38 @@ h6[id] > a:focus::before {
   align-items: flex-end;
 }
 
+blockquote {
+  margin-left: 5px;
+  border-left: 3px solid #30363d;
+  padding-left: 16px;
+}
+
+[editornotes="true"] {
+  position: relative;
+  outline: gray inset 5px;
+  padding: 10px 10px 1px;
+  /* margin-top: 40px; */
+  font-style: italic;
+}
+
+[editornotes="true"]::before {
+  content: "editor notes";
+  position: absolute;
+  /* text-transform: uppercase; */
+  /* right: -10px; */
+  /* bottom: calc(100% + 10px); */
+  right: 1px;
+  top: 1px;
+  /* display: inline-block; */
+  /* text-align: right; */
+  /* text-decoration: underline; */
+  font-style: italic;
+  font-size: 0.8em;
+  outline: gray solid thin;
+  box-sizing: content-box;
+  padding: 0 5px;
+}
+
 pre > code {
   font-size: 0.8em;
   counter-reset: line;
@@ -118,4 +150,30 @@ pre > code .word.word--highlighted {
   background-color: var(--theme-codeblock-highlight-background-color);
   padding: 5px;
   border-radius: 5px;
+}
+
+[data-rehype-pretty-code-title][data-theme="dark"][data-rehype-pretty-code-title][data-theme="dark"] {
+  display: block;
+  background-color: #252526;
+  font-size: 0.9rem;
+}
+
+[data-rehype-pretty-code-title][data-theme="dark"][data-rehype-pretty-code-title][data-theme="dark"]
+  span {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--theme-codeblock-background-color);
+}
+
+[data-rehype-pretty-code-title][data-theme="dark"][data-rehype-pretty-code-title][data-theme="dark"]
+  span::before {
+  display: inline-block;
+  content: attr(data-language);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  transform: scale(0.7, 1);
+  /* color: #d7ba7d; */ /* actual VS code color */
+  color: #e0b352;
+  font-weight: bold;
+  margin-right: 5px;
 }

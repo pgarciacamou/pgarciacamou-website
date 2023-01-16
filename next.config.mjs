@@ -20,6 +20,8 @@ import rehypePrettyCode from "rehype-pretty-code";
 // These two dependencies are needed to add links to headings.
 import rehypeSlug from "rehype-slug"; // adds ids
 import rehypeAutolinkHeadings from "rehype-autolink-headings"; // adds links
+import rehypeWrapCodeTitle from "./unified/plugins/rehype-wrape-code-title.mjs";
+import remarkEditorNotes from "./unified/plugins/remark-editor-notes.mjs";
 // import remarkGetStaticProps from "./unified/plugins/remark-get-static-props.mjs";
 // import path from "path";
 
@@ -58,6 +60,7 @@ const withMDX = nextMDX({
     // remarkMdxCodeMeta = https://github.com/remcohaszing/remark-mdx-code-meta
     // remarkGfm = https://github.com/remarkjs/remark-gfm
     remarkPlugins: [
+      remarkEditorNotes,
       remarkFrontmatter,
       remarkParseFrontmatter,
       remarkUnwrapTexts,
@@ -113,6 +116,8 @@ const withMDX = nextMDX({
     // If you need to create your own plugins, look at: https://github.com/mskelton/mskelton.dev/blob/4b79a701d2e8d980e0065c92366d4541a2477a3a/config/rehype-code-titles.mjs
     rehypePlugins: [
       [
+        // remarkEditorNotes,
+        // rehypeEditorNotes,
         // https://rehype-pretty-code.netlify.app/
         rehypePrettyCode,
         {
@@ -139,6 +144,7 @@ const withMDX = nextMDX({
           },
         },
       ],
+      rehypeWrapCodeTitle,
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: "wrap" }],
     ],

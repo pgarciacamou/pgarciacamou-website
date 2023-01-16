@@ -7,8 +7,8 @@
 import { MDXProvider } from "@mdx-js/react";
 import Head from "next/head";
 import {
-  ElementType,
-  isValidElement,
+  // ElementType,
+  // isValidElement,
   PropsWithChildren,
   ReactNode,
 } from "react";

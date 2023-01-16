@@ -14,11 +14,12 @@
   --theme-contact-link-invert: 0;
   --theme-code-background-color: rgba(175, 184, 193, 0.2);
   --theme-codeblock-background-color: rgb(249, 249, 249);
+  --theme-codeblock-title-background-color: rgb(249, 249, 249);
   --theme-codeblock-highlight-background-color: rgb(255, 248, 197);
   --theme-codeblock-highlight-border-left-color: rgb(212, 167, 44, 0.4);
   --theme-codeblock-display-light: grid;
   --theme-codeblock-display-dark: none;
-  --theme-display-light: var(--undefined);
+  --theme-display-light: initial;
   --theme-display-dark: none;
 }
 
@@ -38,7 +39,7 @@
     --theme-codeblock-display-light: none;
     --theme-codeblock-display-dark: grid;
     --theme-display-light: none;
-    --theme-display-dark: var(--undefined);
+    --theme-display-dark: initial;
   }
 }
 
@@ -56,7 +57,7 @@
   --theme-codeblock-highlight-border-left-color: rgb(212, 167, 44, 0.4);
   --theme-codeblock-display-light: grid;
   --theme-codeblock-display-dark: none;
-  --theme-display-light: var(--undefined);
+  --theme-display-light: initial;
   --theme-display-dark: none;
 }
 
@@ -75,7 +76,7 @@
   --theme-codeblock-display-light: none;
   --theme-codeblock-display-dark: grid;
   --theme-display-light: none;
-  --theme-display-dark: var(--undefined);
+  --theme-display-dark: initial;
 }
 
 /* use the variables */

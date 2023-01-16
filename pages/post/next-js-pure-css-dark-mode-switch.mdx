@@ -1,0 +1,109 @@
+---
+canonicalUrl: https://pgarciacamou.dev/post/next-js-pure-css-dark-mode-switch
+author: Pablo Garcia
+date: "2022-12-13"
+edited: "2022-12-13"
+title: Next.js Pure CSS dark mode switch.
+keywords: CSS, Dark mode, Next.js
+description: ->
+  Next.js Pure CSS dark mode switch.
+---
+
+<div editornotes="true">
+  Should I start the names with an id so that they are sorted, for example:
+  20230108-next-js-pure-css-dark-mode-switch.
+</div>
+
+# Next.js Pure CSS dark mode switch
+
+Normally, you require JavaScript to make updates in the DOM so that we can apply certain clases, but we can use a vanilla HTML/CSS solution to also apply styles to the DOM depending on the user's selection. This idea is interesting when you think about static content, and you want to allow the user to access the content without any JavaScript needed on the client side.
+
+We can use a combination of CSS variables and some special CSS selectors to update the UI without the need to use JavaScript to, for example, change a top-level class. Note; this doesn't apply only to Next.js but the solution below will keep it closely in mind.
+
+With Next.js we have a `global.css` file out of the box being imported either at `pages/app.[jsx|tsx]` (or `app/layout.[jsx|tsx]` if you are using [Next.js 13 new app/ directory](https://nextjs.org/blog/next-13#new-app-directory-beta).
+
+Just like any other problem in programming, there are multiple solutions. Usually, I favor vanilla solutions that use the default Next.js setup, so I'll start with pure CSS and then navigate my way into a sass/SCSS solution, but let's define the architecture first.
+
+### Architecture
+
+For this problem, I want to give the user the choice to select from three options: "os-default", "light", and "dark". This means a "light" and "dark" switch (checkbox/Boolean) wouldn't be enough and we will require a `<select>` element.
+
+When the user selects a different value from the dropdown, CSS should detect the value change, update the theme variables, and do the heavy lifting propagating the changes into the UI.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/39urtysncdsmbi2se4c8.png)
+
+### HTML
+
+So, first let's add the dropdown.
+
+Ideally, we will have a nav bar component where we can add this, but for the purpose of this exercise, let's add the following snippet directly into our `app/layout.[jsx|tsx]` or `pages/app.[jsx|tsx]`:
+
+```jsx title="app/page.jsx" {3-7}
+<div id="theme">
+  <label htmlFor="theme">Theme: </label>
+  <select name="theme" defaultValue="os-default">
+    <option value="os-default">os-default</option>
+    <option value="light">light</option>
+    <option value="dark">dark</option>
+  </select>
+</div>
+```
+
+Now that we have defined our control, we can jump to the styling solutions:
+
+### 1) Pure CSS solution
+
+For the pure CSS solution, we simply have to do the following:
+
+```css title="theme.css" /background-color/13 /color/12 {2,16}
+:root,
+:root:has(#theme option[value="light"]:checked) {
+  --theme-color-scheme: light;
+  --theme-color: black;
+  --theme-background-color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme-color-scheme: dark;
+    --theme-color: white;
+    --theme-background-color: black;
+  }
+}
+
+:root:has(#theme option[value="dark"]:checked) {
+  --theme-color-scheme: dark;
+  --theme-color: white;
+  --theme-background-color: black;
+}
+
+html {
+  color-scheme: var(--theme-color-scheme);
+}
+body {
+  color: var(--theme-color);
+  background-color: var(--theme-background-color);
+}
+```
+
+As we can see, we already use the variables in here to set some top-level props on the html and body elements.
+
+Buy, we can use this inside any stylesheets using the [CSS var() function](https://developer.mozilla.org/en-US/docs/Web/CSS/var):
+
+```css title="someComponent.module.css"
+.someComponent {
+  color: var(--theme-color);
+}
+```
+
+Now, there are a few things to point out here.
+
+First, `:root` is our `<html/>` element ([read more about :root in MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/:root)). We add our variables to the `:root` element so that they are global to all our stylesheets within the DOM, otherwise we could have scoping issues.
+
+Second, we use the `:has` selector to check if the root element includes an element with id `theme` that contains an `<option>` with `value=X` that is checked. This is the key to this pure CSS solution, and it's what allows it to be a pure CSS solution. Not only that, by using `:has`, the theme selector can be anywhere in the DOM, so long as it is a child of `<html/>`.
+
+Third, notice that even if we define the selector `:root:has(#theme option[value="light"]:checked)` before `@media (prefers-color-scheme: dark) { ... }`, the first one has higher specificity and thus overrides the user preferred color scheme. _If the specificity were the same, CSS would select the last value defined in the stylesheets. Using higher specificity is a better practice than using `!important`, but we could also separate it after the media at-rule._
+
+Lastly, note that with this solution, we have to make sure that the styles in `@media (prefers-color-scheme: dark) { ... }` are always up to date with the styles in `:root:has(#theme option[value="dark"]:checked)`, otherwise, we would have theme inconsistencies when it is dark via OS defaults than set by the user using our UI.
+
+Just lroot: hasave a `global.css` file imported 2. Pure CSS using [`@layer`](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) to declare specificity 3. Combining [sass/SCSS](https://nextjs.org/docs/basic-features/built-in-css-support#sass-support) with CSS variables 4. Using sass/SCSS only with [`@import`](https://sass-lang.com/documentation/at-rules/import)
