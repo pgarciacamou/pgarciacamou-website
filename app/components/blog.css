@@ -13,7 +13,7 @@ h3,
 h4,
 h5,
 h6 {
-  text-indent: -5px;
+  text-indent: 0;
 }
 
 h1[id] > a,
@@ -72,7 +72,8 @@ blockquote {
   padding-left: 16px;
 }
 
-[editornotes="true"] {
+[editornote],
+[editornotes] {
   position: relative;
   outline: gray inset 5px;
   padding: 10px 10px 1px;
@@ -80,7 +81,8 @@ blockquote {
   font-style: italic;
 }
 
-[editornotes="true"]::before {
+[editornote]::before,
+[editornotes]::before {
   content: "editor notes";
   position: absolute;
   /* text-transform: uppercase; */
@@ -103,6 +105,7 @@ pre > code {
   counter-reset: line;
   /* Display grid allows line highlighting to span the width of a horizontally-scrollable code block on small viewport widths. */
   background-color: var(--theme-codeblock-background-color);
+  overflow: auto;
 }
 
 pre > code > .line::before {
@@ -117,16 +120,22 @@ pre > code > .line::before {
   color: gray;
 }
 
-div[data-rehype-pretty-code-title][data-theme="light"],
 pre[data-theme="light"],
 code[data-theme="light"] {
   display: var(--theme-display-light);
 }
 
-div[data-rehype-pretty-code-title][data-theme="dark"],
 pre[data-theme="dark"],
 code[data-theme="dark"] {
   display: var(--theme-display-dark);
+}
+
+[data-rehype-pretty-code-title][data-theme="light"] {
+  display: var(--theme-codeblock-title-display-light);
+}
+
+[data-rehype-pretty-code-title][data-theme="dark"] {
+  display: var(--theme-codeblock-title-display-dark);
 }
 
 pre > code[data-theme="light"] {
@@ -152,21 +161,18 @@ pre > code .word.word--highlighted {
   border-radius: 5px;
 }
 
-[data-rehype-pretty-code-title][data-theme="dark"][data-rehype-pretty-code-title][data-theme="dark"] {
-  display: block;
-  background-color: #252526;
+[data-rehype-pretty-code-title] {
+  background-color: var(--theme-codeblock-title-background-color);
   font-size: 0.9rem;
 }
 
-[data-rehype-pretty-code-title][data-theme="dark"][data-rehype-pretty-code-title][data-theme="dark"]
-  span {
+[data-rehype-pretty-code-title] span {
   display: inline-block;
   padding: 8px 16px;
   background-color: var(--theme-codeblock-background-color);
 }
 
-[data-rehype-pretty-code-title][data-theme="dark"][data-rehype-pretty-code-title][data-theme="dark"]
-  span::before {
+[data-rehype-pretty-code-title] span::before {
   display: inline-block;
   content: attr(data-language);
   text-transform: uppercase;
