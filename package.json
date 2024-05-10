@@ -13,7 +13,7 @@
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
     "@vercel/analytics": "0.1.5",
-    "classnames": "2.3.2",
+    "classnames": "2.5.1",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
     "next": "13.0.5",
